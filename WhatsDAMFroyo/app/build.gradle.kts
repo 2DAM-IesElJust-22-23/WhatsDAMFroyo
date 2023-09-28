@@ -7,6 +7,10 @@ android {
     namespace = "com.ieseljust.pmdm.whatsdamfroyo"
     compileSdk = 33
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.ieseljust.pmdm.whatsdamfroyo"
         minSdk = 24
