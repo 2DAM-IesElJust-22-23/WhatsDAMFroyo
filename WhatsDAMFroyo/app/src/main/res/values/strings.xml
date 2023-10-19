@@ -3,4 +3,5 @@
     <string name="serverAddress">Server Adress</string>
     <string name="Connect">Connect</string>
     <string name="nickname">Nickname\n</string>
+    <string name="connection_info_template">Connectat a %1$s com a %2$s</string>
 </resources>

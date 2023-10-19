@@ -1,37 +1,39 @@
 package com.ieseljust.pmdm.whatsdamfroyo
 
-import android.content.Context
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class AdaptadorMissatge(
-    val context: Context,
-    val eventListener: (Missatge, View) -> Boolean)
-    :RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+  private val llistaMissatges : List<Missatge>,
+    )
+    :RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(
-        parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val vista=inflater.inflate(
-            R.layout.my_msg_viewholder,
-            parent,false);
-        return MissatgeViewHolder(vista,context)
+        parent: ViewGroup, viewType: Int): ViewHolder {
+        val vista = LayoutInflater.from(parent.context).inflate(R.layout.my_msg_viewholder,parent, false)
 
+
+        return MissatgeViewHolder(vista)
+
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        TODO("Not yet implemented")
     }
 
     override fun getItemCount(): Int {
-        return Missatges.missatges.size
+        return llistaMissatges.size
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+     fun onBindViewHolder(holder: MissatgeViewHolder, position: Int) {
 
-            (holder as MissatgeViewHolder).bind(
-                Missatges.missatges[position],
-                eventListener)
+            val missatge= llistaMissatges[position]
+            holder.bind(missatge)
     }
 }

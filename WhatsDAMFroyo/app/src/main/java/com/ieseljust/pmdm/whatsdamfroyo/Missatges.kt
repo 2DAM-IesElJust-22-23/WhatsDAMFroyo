@@ -1,25 +1,12 @@
 package com.ieseljust.pmdm.whatsdamfroyo
 
-object Missatges {
-    var missatges: ArrayList<Missatge>
-
-    private var fontMissatges: ArrayList<Missatge>
-
-    init {
-        //  Inicialització de la llista de contactes
-        missatges = ArrayList<Missatge>()
-        fontMissatges= ArrayList<Missatge>()
-    }
-
-    fun add():Boolean{
-        if(fontMissatges.size>0){
-            missatges.add(fontMissatges[0])
-            fontMissatges.removeAt(0)
-            return true
+class Missatges (val nomUsuari: String, val text: String){
+    object MissatgesObj{
+        val llistaMissatges = mutableListOf<Missatge>()
+        fun afegirMissatge(nomUsuari: String, text: String){
+            val missatge = Missatge(nomUsuari, text)
+            llistaMissatges.add(missatge)
         }
-
-        return false
-
     }
 
 
