@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
             ipservidor=savedInstanceState.getString("ipservidor","")
         }
 
+
+
         binding.nickNameText.hint = "usuari"
         binding.serverAddressText.hint= "ipserver"
 
