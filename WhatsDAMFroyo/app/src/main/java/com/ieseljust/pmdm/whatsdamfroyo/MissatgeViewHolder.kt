@@ -13,9 +13,8 @@ import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.util.Date
 
-class MissatgeViewHolder(itemView: View, val context: Context) :
+class MissatgeViewHolder(itemView: View) :
 
-    View.OnClickListener,
     RecyclerView.ViewHolder(itemView){
         val text = itemView.findViewById(R.id.msg_text) as TextView
         val temps = itemView.findViewById(R.id.msg_me_timestamp) as TextView
@@ -24,14 +23,10 @@ class MissatgeViewHolder(itemView: View, val context: Context) :
         // Bloc d'inicialitzacio per indicar que serà la pròpia classe
         // qui implemente el mètode `onClick` de l'item
 
-        init {
-            itemView.setOnClickListener(this)
-        }
-    @RequiresApi(Build.VERSION_CODES.O)
+
     fun bind(
-        missatge: Missatge,
-        eventListener: (Missatge, View) -> Boolean){
-        text.text
+        missatge: Missatge ){
+        text.text = missatge.text
 
 
 
@@ -43,12 +38,6 @@ class MissatgeViewHolder(itemView: View, val context: Context) :
 
 
 
-    override fun onClick(item: View?) {
-        Toast.makeText(context, "Has fet click sobre ${text.text}", Toast.LENGTH_SHORT).show()
-        // De moment la mostrem al Log
-        Log.d("Metode onClick", "Has fet click sobre ${text.text}")
-
-    }
 
 
 }
