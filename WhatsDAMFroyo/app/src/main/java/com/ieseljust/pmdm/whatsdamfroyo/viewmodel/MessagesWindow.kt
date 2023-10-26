@@ -1,13 +1,16 @@
-package com.ieseljust.pmdm.whatsdamfroyo
+package com.ieseljust.pmdm.whatsdamfroyo.viewmodel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ieseljust.pmdm.whatsdamfroyo.R
 import com.ieseljust.pmdm.whatsdamfroyo.databinding.ActivityMessagesWindowBinding
+import com.ieseljust.pmdm.whatsdamfroyo.model.Missatges
 
 class MessagesWindow : AppCompatActivity() {
     private lateinit var  binding: ActivityMessagesWindowBinding
@@ -39,8 +42,19 @@ class MessagesWindow : AppCompatActivity() {
         recyclerView.adapter = adaptador
 
 
+        var viewModel: MissatgesViewModel
+        viewModel =
+            ViewModelProvider(this)[MissatgesViewModel::class.java]
 
-            enviarMensaje.setOnClickListener{
+        viewModel._adaptador.observe(this) {
+            binding.MessagesRecyclerView.adapter= it
+        }
+        binding.sendMessage.setOnClickListener{
+            viewModel.add(usuari,textformatado)
+        }
+
+
+        enviarMensaje.setOnClickListener{
                 val missatgeTexto=messageTextEdit.text.toString()
                 if(missatgeTexto.isNotEmpty()){
                     if (usuari != null) {

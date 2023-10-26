@@ -1,14 +1,15 @@
-package com.ieseljust.pmdm.whatsdamfroyo
+package com.ieseljust.pmdm.whatsdamfroyo.viewmodel
 
-import android.os.Build
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.ieseljust.pmdm.whatsdamfroyo.R
+import com.ieseljust.pmdm.whatsdamfroyo.model.Missatge
+import com.ieseljust.pmdm.whatsdamfroyo.model.Missatges
+import com.ieseljust.pmdm.whatsdamfroyo.repository.MissatgeRepository
 
-class AdaptadorMissatge( private val llistaMissatges : List<Missatge>, ) :RecyclerView.Adapter<ViewHolder>() {
+class AdaptadorMissatge(private val llistaMissatges : List<Missatge>, ) :RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,16 +21,17 @@ class AdaptadorMissatge( private val llistaMissatges : List<Missatge>, ) :Recycl
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as MissatgeViewHolder).bind(Missatges.MissatgesObj.llistaMissatges[position]   )
+        (holder as MissatgeViewHolder).bind(
+            MissatgeRepository.getInstance().getMissatges()[position]   )
     }
 
     override fun getItemCount(): Int {
-        return llistaMissatges.size
+        return MissatgeRepository.getInstance().getNumMissatges()
     }
 
      fun onBindViewHolder(holder: MissatgeViewHolder, position: Int) {
 
             val missatge= llistaMissatges[position]
-            holder.bind(missatge)
+            holder.bind( MissatgeRepository.getInstance().getMissatges()[position]   )
     }
 }

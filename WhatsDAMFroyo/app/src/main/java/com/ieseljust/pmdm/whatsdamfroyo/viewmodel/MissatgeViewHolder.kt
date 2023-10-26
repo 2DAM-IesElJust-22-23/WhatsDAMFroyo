@@ -1,16 +1,11 @@
-package com.ieseljust.pmdm.whatsdamfroyo
+package com.ieseljust.pmdm.whatsdamfroyo.viewmodel
 
-import android.content.Context
-import android.os.Build
-import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.ieseljust.pmdm.whatsdamfroyo.R
+import com.ieseljust.pmdm.whatsdamfroyo.model.Missatge
 import java.text.SimpleDateFormat
-import java.time.LocalTime
 import java.util.Date
 
 class MissatgeViewHolder(itemView: View) :
@@ -25,7 +20,8 @@ class MissatgeViewHolder(itemView: View) :
 
 
     fun bind(
-        missatge: Missatge ){
+        missatge: Missatge
+    ){
         text.text = missatge.text
 
 
